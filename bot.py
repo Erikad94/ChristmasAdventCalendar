@@ -46,14 +46,21 @@ async def on_message(message):
         "Christmas chronicles 2"]
 
     today = datetime.datetime.now().day
+    month = datetime.datetime.now().month
     count = 1
     if message.content == 'ChristmasMovieForToday':
-        for movie in movies:
-            if count == today:
-                message = "Today is a wonderful christmasy day, you should watch " + movie
-                await message.channel.send(message)
-                break
-            else:
-                count+=1
+        if month ==12:
+            for movie in movies:
+                if count == today:
+                    message = "Today is a wonderful christmasy day, you should watch " + movie
+                    await message.channel.send(message)
+                    break
+                else:
+                    count+=1
+                if count > 25:
+                    await message.channel.send("Sadly it is not christmas yet")
+                    break
+        else:
+            await message.channel.send("Sadly it is not christmas yet")
 
 client.run(TOKEN)
