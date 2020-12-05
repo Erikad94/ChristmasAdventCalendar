@@ -95,7 +95,7 @@ async def on_message(message):
 
     today = datetime.datetime.now().day
     month = datetime.datetime.now().month
-    if message.content == 'ChristmasBot Advent':
+    if message.content == 'ChristmasMovieBot Advent':
         if month ==12 and today < 26:
             message = message = "Today is a wonderful christmasy day, you should watch " + movies[today-1] + ". You can find out where to watch it here : " + links[today-1]
             await message.channel.send(message)
@@ -103,20 +103,20 @@ async def on_message(message):
         else:
             await message.channel.send("Sadly it is not christmas yet")
 
-    if message.content == 'ChristmasBot Random':
+    if message.content == 'ChristmasMovieBot Random':
         rand = random.randint(0, len(movies)-2)
         message = "HoHoHo, you wanted a random Christmas movie here it is : " + movies[rand] + ". You can find out where to watch it here : " + links[rand]
         await message.channel.send(message)
         break
 
-    if message.content == 'ChristmasBot Weird':
+    if message.content == 'ChristmasMovieBot Weird':
         rand = random.randint(0, len(movies)-2)
         message = "Here is the weirdest christmas movie you can watch : " + movies[len(movies)-1] + ". You can find out where to watch it here : " + links[len(movies)-1]
         await message.channel.send(message)
         break
 
-    if message.content == 'ChristmasBot Help':
-        message = "You have 3 options:\nChristmasBot Advent : I Will give you the movie of the day.\nChristmasBot Random : I will give you a random movie from my list.\nChristmasBot Weird : I Will give you the weirdest Christmas movie I know."
+    if message.content == 'ChristmasMovieBot Help':
+        message = "You have 3 options:\nChristmasMovieBot Advent : I Will give you the movie of the day.\nChristmasMovieBot Random : I will give you a random movie from my list.\nChristmasMovieBot Weird : I Will give you the weirdest Christmas movie I know."
         await message.channel.send(message)
         break
 
