@@ -1,8 +1,9 @@
 # bot.py
 import os
-import datetime
+from datetime import datetime
 import random
 
+import pytz
 import discord
 from dotenv import load_dotenv
 
@@ -93,10 +94,11 @@ async def on_message(message):
         "https://www.justwatch.com/ca/movie/jack-frost",
         "https://www.justwatch.com/ca/movie/santa-claus-conquers-the-martians"]
 
-    today = datetime.datetime.now().day
-    month = datetime.datetime.now().month
+    now = datetime.now(pytz.timezone('America/Montreal'))
+    today = now.day
+    month = now.month
     if message.content == 'ChristmasMovieBot Advent':
-        if month ==12 and today < 26:
+        if month == 12 and today < 26:
             message = message = "Today is a wonderful christmasy day, you should watch " + movies[today-1] + ". You can find out where to watch it here : " + links[today-1]
             await message.channel.send(message)
             break
